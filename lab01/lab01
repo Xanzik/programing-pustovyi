@@ -1,0 +1,158 @@
+Установил VirtualBox и установил операционную систему Ubuntu OC.
+Инсталировал минимально-необходимые пакеты: git, gcc, clang, clang-format, clang-tidy, tree, make, cpppcheck. При помощи apt-get.
+С помощью git clone клонировал репозиторий.
+                                                                   С помощью tree вывел на экран структуру проекта:
+├── dist
+│   └── main.bin
+├── doc
+│   ├── assets
+│   │   ├── algorithm-generateAnimal.png
+│   │   ├── algorithm-main.png
+│   │   ├── algorithm-showAnimals.png
+│   │   ├── animal-fields.png
+│   │   └── lab00.drawio
+│   ├── lab00.docx
+│   ├── lab00.md+
+│   └── lab00.pdf
+├── Doxyfile
+├── Makefile
+├── README.md
+├── src
+│   ├── lib.c
+│   ├── lib.c.dump
+│   ├── lib.h
+│   ├── main.c
+│   └── main.c.dump
+└── test
+    ├── test.c
+    └── test.c.dump
+                                                            Скомпилировал проект с помощью make clean prep compile check:
+rm -rf dist
+mkdir dist
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c src/main.c -o ./dist/main.bin
+clang-format --verbose -dry-run --Werror src/* test/*
+Formatting src/lib.c
+Formatting src/lib.c.dump
+Formatting src/lib.h
+Formatting src/main.c
+Formatting src/main.c.dump
+Formatting test/test.c
+Formatting test/test.c.dump
+cppcheck --enable=all --inconclusive --addon=cert --error-exitcode=1  -v --suppress=unreadVariable:*/main.c --suppress=knownConditionTrueFalse:*/main.c --suppress=missingIncludeSystem  --check-config --suppress=*:*/test.c  --suppress=unmatchedSuppression:*/main.c .
+Checking src/lib.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+1/3 files checked 17% done
+Checking src/main.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+2/3 files checked 41% done
+Checking test/test.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+3/3 files checked 100% done
+                                                               Выполнил изменения в lib.c с помощью текстового редактора:
+result = "Корова Petya";
+Снова скомпелировал проект, убедился, что нет ошибок.
+Провёл изменения в файле Makefile, создал команду all, которая выполняет цели clean prep compile check и убрал создание бинарного файла test.bin
+xanzik@xanzik-VirtualBox:~/sample_project/lab00$ make all
+make clean prep compile check
+make[1]: вход в каталог «/home/xanzik/sample_project/lab00»
+rm -rf dist
+mkdir dist
+clang -std=gnu11 -g -Wall -Wextra -Werror -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -Wno-unused-variable -Werror=vla -I./src src/lib.c src/main.c -o ./dist/main.bin
+clang-format --verbose -dry-run --Werror src/* test/*
+Formatting src/lib.c
+Formatting src/lib.c.dump
+Formatting src/lib.h
+Formatting src/main.c
+Formatting src/main.c.dump
+Formatting test/test.c
+Formatting test/test.c.dump
+cppcheck --enable=all --inconclusive --addon=cert --error-exitcode=1  -v --suppress=unreadVariable:*/main.c --suppress=knownConditionTrueFalse:*/main.c --suppress=missingIncludeSystem  --check-config --suppress=*:*/test.c  --suppress=unmatchedSuppression:*/main.c .
+Checking src/lib.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+1/3 files checked 17% done
+Checking src/main.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+2/3 files checked 41% done
+Checking test/test.c ...
+Defines:
+Undefines:
+Includes:
+Platform:Native
+3/3 files checked 100% done
+make[1]: выход из каталога «/home/xanzik/sample_project/lab00»
+                                                                              Установил версии clang, make.
+xanzik@xanzik-VirtualBox:~/sample_project/lab00$ clang --version
+clang version 10.0.0-4ubuntu1 
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+xanzik@xanzik-VirtualBox:~/sample_project/lab00$ make --version
+GNU Make 4.2.1
+Эта программа собрана для x86_64-pc-linux-gnu
+Copyright (C) 1988-2016 Free Software Foundation, Inc.
+Лицензия GPLv3+: GNU GPL версии 3 или новее <http://gnu.org/licenses/gpl.html>
+Это свободное программное обеспечение: вы можете свободно изменять его и
+распространять. НЕТ НИКАКИХ ГАРАНТИЙ вне пределов, допустимых законом.
+xanzik@xanzik-VirtualBox:~/sample_project/lab00$ 
+								С помощью команды man man, установил что она предназначена для просмотра справочных страниц.
+								С помощью git diff посмотрел выполненые мною изменения:
+xanzik@xanzik-VirtualBox:~/sample_project/lab00$ git diff
+diff --git a/lab00/Makefile b/lab00/Makefile
+index 088755f..d01157d 100644
+--- a/lab00/Makefile
++++ b/lab00/Makefile
+@@ -6,16 +6,13 @@ clean:
+        rm -rf dist
+ prep:
+        mkdir dist
+-compile: main.bin test.bin
+-
++compile: main.bin
+ main.bin: src/main.c
+        $(CC) $(C_OPTS) $< -o ./dist/$@
+-test.bin: test/test.c
+-       $(CC) $(C_OPTS) $< -o ./dist/$@
+-test: clean prep compile
+-       ./dist/test.bin
+ run: clean prep compile
+        ./dist/main.bin
++all:
++       make clean prep compile check
+ doxygen:
+        doxygen Doxyfile
+ check:
+diff --git a/lab00/src/lib.c b/lab00/src/lib.c
+index f7f86e0..4050527 100644
+--- a/lab00/src/lib.c
++++ b/lab00/src/lib.c
+@@ -20,7 +20,7 @@ const char *get_animal_type_name(enum animal_type type)
+                result = "Собака";
+                break;
+        case COW:
+-               result = "Корова";
++               result = "Корова Petya";
+                break;
+        case PIG:
+                result = "Свиня";
+                                                        Вывод: Я научился работе с терминалом, изменениям в Makefile, установке пакетов, настройке Linux.
+
+
+
+
+
+

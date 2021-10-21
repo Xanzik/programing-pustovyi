@@ -162,4 +162,4 @@ File: /home/xanzik/programing-pustovyi/lab02/src/main.c
   [8] = (type = PIG, height = 0, weight = 4198512)
   [9] = (type = PIG, height = 4294960736, weight = 32767)
 }
-
+. Дослідив режими компіляції з інформацією про відлагодження та без неї; Если мы компилируем без информации про отладку, то функции lldb i gdb будут недоступны.
