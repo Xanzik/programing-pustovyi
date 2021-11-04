@@ -1,7 +1,7 @@
 Звiт
 Пустовий 121в Лабороторна робота 2. Вступ до програмування. Основи debug процессу.
-Зарегестрировался на github и создал там приватный репозиторий с помощью веб-интерфейса проекта.
-Склонировался с созданного репозитория с помощью git clone.
+Зареєструвався на github і створив там приватний репозиторій за допомогою веб-інтерфейсу проекту.
+Схилявся із створеного репозиторію за допомогою git clone.
 Скопіював наступні файли:
 • файл .clang-format з проекта sample_project до кореня мого репозиторія
 • файл .clang-tidy з проекта sample_project до кореня мого репозиторія
@@ -54,7 +54,7 @@ Includes:
 Platform:Native
 3/3 files checked 100% done
 make[1]: выход из каталога «/home/xanzik/programing-pustovyi/lab02»
-Запускаю бинарник main.bin чтобы увидеть, что "Людина" выводится на экран:
+Запускаю бінарний файл main.bin, щоб побачити, що "Людина" виводиться на екран:
 xanzik@xanzik-VirtualBox:~/programing-pustovyi/lab02$ tree
 .
 ├── dist
@@ -96,7 +96,7 @@ xanzik@xanzik-VirtualBox:~/programing-pustovyi/lab02/dist$ ./main.bin
 Інформація про тварину №08: Людина: зріст = 41 см, маса = 71 гр. 
 Інформація про тварину №09: Корова Petya: зріст = 111 см, маса = 119 гр. 
 Інформація про тварину №10: Людина: зріст = 71 см, маса = 73 гр. 
-Відкриd в відлагоднику (debugger) lldb виконуючий файл, зупинився на строці 43:
+Відкрив в відлагоднику (debugger) lldb виконуючий файл, зупинився на строці 43:
 xanzik@xanzik-VirtualBox:~/programing-pustovyi/lab02/dist$ lldb main.bin
 (lldb) target create "main.bin"
 Current executable set to '/home/xanzik/programing-pustovyi/lab02/dist/main.bin' (x86_64).
