@@ -1,8 +1,10 @@
-
-#define PI 3.1415
-
+// Дано трьох-значне число. Обчислити значення другої цифри в числі. //
 int main() {
-	float r, V, h;
-	float result = V;
-	result = PI*r*r*h;
+    int x = 485;
+    int y = 0;
+    int z = 0;
+    y = x % 100;
+    z = y / 10;
+
+    return 0;
 }

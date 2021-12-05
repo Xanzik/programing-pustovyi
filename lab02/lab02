@@ -19,7 +19,7 @@
 		break;
 В файле lib.h:
 	HUMAN, /**< Людина */
-Скомпилировал с помощью make all:
+Cкомпилював завдяки make all:
 xanzik@xanzik-VirtualBox:~/programing-pustovyi/lab02$ make all
 make clean prep compile check
 make[1]: вход в каталог «/home/xanzik/programing-pustovyi/lab02»
