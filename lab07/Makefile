@@ -8,7 +8,7 @@ clean:
 prep:
 	mkdir dist
 compile:
-	gcc -g src/task1 -o ./dist/main.bin
+	gcc -g src/main.c -o ./dist/main.bin
 run:
 	./dist/main.bin
 all: 
