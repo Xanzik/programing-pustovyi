@@ -1,7 +1,7 @@
 ## Common Project info
-PROJECT_NAME = "lab10"
+PROJECT_NAME = "lab11"
 PROJECT_BRIEF = ""
-PROJECT_NUMBER = 0.2
+PROJECT_NUMBER = 0.1
 
 ## output options
 OUTPUT_DIRECTORY = ./dist
