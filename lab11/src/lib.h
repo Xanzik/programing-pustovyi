@@ -8,7 +8,25 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
-//unsigned long makesize(unsigned long size);
+/**
+ * Input
+ * Функція для ввода елементів двомірного масиву
+ * 
+ * @param entity двомірний масив {@link arr} та його розмір {@link x}
+ * @return заповнений масив {@link arr}
+ */
 void Input(double **arr, unsigned long x);
+/**
+ * @brief 
+ * 
+ * @param entity двомірний масив {@link arr} та його розмір {@link x}
+ * @return вивод масиву {@link arr}
+ */
 void Output1(double **arr, unsigned long x);
+/**
+ * @brief 
+ * 
+ * @param entity двомірний масив {@link arr} та його розмір {@link x}
+ * @return транспонований масив {@link arr}
+ */
 void Output2(double **arr, unsigned long x);

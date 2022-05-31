@@ -53,14 +53,3 @@ void output(watch *p) {
     }
     fclose(file);
 }
-double averageprice(watch *p) {
-	double average = 0;
-	double sum = 0;
-	for(int i = 0; i < count_of_watches; i++) {
-		if(strcmp (p[i].type, "Sport")==0) {
-			average += p[i].price;
-			sum++;
-	}
-	}
-	return average = average / sum;
-}

@@ -31,14 +31,3 @@ void Input(double **arr, unsigned long x) {
 		}
 	}
 }
-/*unsigned long makesize(unsigned long size) {
-	FILE *file = fopen("/home/xanzik/programing-pustovyi/lab11/assets/input", "r");
-	if(file==NULL) {
-		printf("error");
-		return 1;
-	}
-	fscanf(file, "%lu", &size);
-	printf("%lu", size);
-	fclose(file);
-	return size;
-} */

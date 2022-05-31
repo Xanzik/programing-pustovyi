@@ -9,4 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define size 100
+/**
+ * Функція підрахунку слів
+ * 
+ * @param entity масив {@link arr} та його розмір {@link x}
+ * @return кількість гласних та согласних {@link vow} {@link end}
+ */
 void percent(char *arr, int x);

@@ -15,15 +15,25 @@
  * @version 1.0
  */
 #include "lib.h"
+/**
+ * Головна функція.
+ *
+ * Послідовність дій:
+ * - створюємо масив елементів.
+ * - відкриваємо файл та заповнюємо масив
+ * - {@link input}
+ * - вивод на екран
+ * - {@link show}
+ * - поіск нееобхідних часів за ціною
+ * - {@link search}
+ * @return успішний код повернення з програми (0)
+ */
 int main() {
-	double x = 0;
 	watch watches[count_of_watches];
 	int size = sizeof(watches) / sizeof(watches[0]);
 	input(watches, size);
-	show(watches);
 	search(watches, 400);
-	x = averageprice(watches);
-	printf("\n");
-	printf("%f\n", x);
+	sort(watches);
+	show(watches);
     return 0;
 }

@@ -1,5 +1,12 @@
 #include "list.h"
-
+/**
+ * @file list.h
+ * @brief Файл з реалізацією функцій
+ *
+ * @author Pustovyi I.
+ * @date 26-apr-2022
+ * @version 1.0
+ */
 void input(struct watch *watches, size_t x) {
     FILE *file = fopen("/home/xanzik/programing-pustovyi/lab15/assets/input.txt", "r");
     if (file == NULL) {

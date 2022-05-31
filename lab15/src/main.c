@@ -15,6 +15,22 @@
  * @version 1.0
  */
 #include "list.h"
+/**
+ * Головна функція.
+ *
+ * Послідовність дій:
+ * - створюємо масив елементів.
+ * - відкриваємо файл та заповнюємо масив
+ * - {@link input}
+ * - заповнюємо список елементами
+ * - додаємо елемент
+ * - {@link add}
+ * - вдаляємо елемент
+ * - {@link put_away}
+ * - виводимо вміст списку
+ * - {@link show1}
+ * @return успішний код повернення з програми (0)
+ */
 int main() {
 	unsigned long int cout = (unsigned long int)count();
 	struct watch *watches = malloc(cout * sizeof(struct watch));
@@ -24,7 +40,9 @@ int main() {
 	for(unsigned long int i = 0; i < cout; i++) {
 	(container+i)->watches = watches+i;
 	}
+	add(container, &cout);
 	put_away(container, 0 ,&cout);
+	show1(container);
 	free(watches);
 	free(container);
     return 0;
